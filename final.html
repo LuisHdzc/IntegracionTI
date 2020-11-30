@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Standard Meta -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">    
+
+    <title>Deteccion de COVID</title>    
+
+    <link rel="stylesheet" type="text/css" href="https://semantic-ui.com/dist/semantic.min.css">
+
+    <script
+    src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+    <script src="https://semantic-ui.com/dist/semantic.min.js"></script>
+
+    <script src="index.js"></script>
+    <script src="red_neuronal.js"></script>
+
+    <style type="text/css">  
+        .gris{
+            background-color: #F0F8FF!important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="ui basic modal" id="modal_bien">
+        <h2 class="ui center aligned icon header">
+            <div>
+                <i class="green user md icon"></i>
+                <div class="content">Posible Negativo</br> Siga con las medidas de Sanidad y Sana Distancia!</div>
+            </div>
+        </h2>
+        <div class="content">            
+        </div>
+        <div class="actions">
+        </div>
+    </div>
+
+    <div class="ui basic modal" id="modal_mal">
+        <h2 class="ui center aligned icon header">
+            <div>
+                <i class="red  ambulance icon"></i>
+                <div class="content">Posible Positivo</br> Si presentas deterioro en tu salud, acude inmediatamente a tu Unidad Médica.</div>
+            </div>
+        </h2>
+        <div class="content">            
+        </div>
+        <div class="actions">
+        </div>
+    </div>
+
+    <div class="ui masthead vertical segment gris">
+        <div class="ui container">
+            
+            <div class="ui hidden divider"></div>
+
+            <h1 class="ui header">
+                CUESTIONARIO PARA POSIBLE DIAGNÓSTICO 
+        
+                <div class="sub header">
+                </br>Este cuestionario no sustituye a una prueba clínica; es únicamente informativo y no representa un diagnóstico médico.</br>                       
+                </div>
+                
+            </h1>
+
+            <div class="ui hidden divider"></div>
+            <div class="ui hidden divider"></div>
+            <h3 class="ui center alinged header">¿En los últimos 7 días has tenido alguno de los siguientes síntomas?</h3>
+            
+
+        </div>
+    </div>
+
+    <div class="ui hidden divider"></div>
+    <div class="ui hidden divider"></div>
+
+    
+
+    <div class="ui four cards">    
+        <div class="ui card" id="sintoma_fiebre">
+            <div class="content">
+                <div class="center aligned header">Fiebre</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_fiebre');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_tosseca">
+            <div class="content">
+                <div class="center aligned header">Tos Seca</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_tosseca');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_cansancio">
+            <div class="content">
+                <div class="center aligned header">Cansancio</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_cansancio');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_molestiasydolores">
+            <div class="content">
+                <div class="center aligned header">Molestias y dolores</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_molestiasydolores');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_dolordegarganta">
+            <div class="content">
+                <div class="center aligned header">Dolor de Garganta</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_dolordegarganta');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_diarrea">
+            <div class="content">
+                <div class="center aligned header">Diarrea</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_diarrea');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_conjuntivitis">
+            <div class="content">
+                <div class="center aligned header">Conjuntivitis</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_conjuntivitis');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_dolordecabeza">
+            <div class="content">
+                <div class="center aligned header">Dolor de Cabeza</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_dolordecabeza');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_perdida">
+            <div class="content">
+                <div class="center aligned header">Pérdida del sentido del olfato o del gusto</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_perdida');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_erupciones">
+            <div class="content">
+                <div class="center aligned header">Erupciones cutáneas</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_erupciones');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_dificultad">
+            <div class="content">
+                <div class="center aligned header">Dificultad para respirar o sensación de falta de aire</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_dificultad');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_doloropresionenelpecho">
+            <div class="content">
+                <div class="center aligned header">Dolor o presión en el pecho</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_doloropresionenelpecho');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>
+        </div>
+        
+
+        
+        <div class="ui card" id="sintoma_incapacidadparahablaromoverse">
+            <div class="content">
+                <div class="center aligned header">Incapacidad para hablar o moverse</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui blue basic attached fluid button" onclick="elegir_sintoma('sintoma_incapacidadparahablaromoverse');">
+                    <i class="add icon"></i>
+                    Elegir
+                </button>
+            </div>            
+        </div>
+
+        <div class="ui card">
+            <div class="content">
+                <div class="center aligned header">Da click en continuar, si terminaste de seleccionar los sintomas.</div>
+                <div class="center aligned description">
+                    <p></p>
+                </div>
+            </div>
+            <div class="extra content">
+                <button class="ui green attached fluid button" onclick="red_neuronal();">
+                    <i class="add icon"></i>
+                    Continuar
+                </button>
+            </div>            
+        </div>
+
+    </div>
+    
+
+    
+
+</body>
+
+</html>

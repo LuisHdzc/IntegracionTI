@@ -1,0 +1,14 @@
+**En esta carpeta se encontrara la red neuronal integrada 
+con el form de la pagina**
+
+es decir, el proyecto final terminado.
+
+el archivo "final.html" 
+ - contiene el diseño de la vista de la pagina, como el formulario
+   los colores, y el resultado del mismo
+
+el archivo "index.js"
+ - contiene lo necesario para que funcione la pagina web
+
+el archivo "red_neuronal.js"
+ - contiene la red neuronal ya entrenada.
